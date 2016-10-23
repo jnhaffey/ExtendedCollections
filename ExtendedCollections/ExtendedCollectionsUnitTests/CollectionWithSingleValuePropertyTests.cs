@@ -32,7 +32,7 @@ namespace ExtendedCollectionsUnitTests
 		public void Test_CollectionWithSingleValueProperty_ModifySingleObject_SinglePropertyChangedEventRaised()
 		{
 			// ARRANGE
-			_person.EmailAddresses = new CollectionWithSingleValueProperty<EmailAddress, bool>("IsDefault", true)
+			_person.EmailAddresses = new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true)
 			{
 				new EmailAddress {IsDefault = true, Address = "john.smith@example.com"}
 			};
@@ -50,7 +50,7 @@ namespace ExtendedCollectionsUnitTests
 		public void Test_CollectionWithSingleValueProperty_AddToCollection_Valid_HandlerDefault()
 		{
 			// ARRANGE
-			_person.EmailAddresses = new CollectionWithSingleValueProperty<EmailAddress, bool>("IsDefault", true)
+			_person.EmailAddresses = new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true)
 			{
 				new EmailAddress {IsDefault = true, Address = "john.smith@example.com"}
 			};
@@ -72,7 +72,7 @@ namespace ExtendedCollectionsUnitTests
 		public void Test_CollectionWithSingleValueProperty_AddToCollection_Invalid_HandlerDefault()
 		{
 			// ARRANGE
-			_person.EmailAddresses = new CollectionWithSingleValueProperty<EmailAddress, bool>("IsDefault", true)
+			_person.EmailAddresses = new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true)
 			{
 				new EmailAddress {IsDefault = true, Address = "john.smith@example.com"}
 			};
@@ -95,7 +95,7 @@ namespace ExtendedCollectionsUnitTests
 		public void Test_CollectionWithSingleValueProperty_AddToCollection_Invalid_HandlerThrowException()
 		{
 			// ARRANGE
-			_person.EmailAddresses = new CollectionWithSingleValueProperty<EmailAddress, bool>("IsDefault", true, false,
+			_person.EmailAddresses = new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true, false,
 				SinglePropertyHandlerType.THROW_EXCEPTION)
 			{
 				new EmailAddress {IsDefault = true, Address = "john.smith@example.com"}
@@ -117,7 +117,7 @@ namespace ExtendedCollectionsUnitTests
 		public void Test_CollectionWithSingleValueProperty_ChangeToCollection_Invalid_HandlerThrowException()
 		{
 			// ARRANGE
-			_person.EmailAddresses = new CollectionWithSingleValueProperty<EmailAddress, bool>("IsDefault", true, false,
+			_person.EmailAddresses = new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true, false,
 				SinglePropertyHandlerType.THROW_EXCEPTION)
 			{
 				new EmailAddress {IsDefault = true, Address = "john.smith@example.com"},

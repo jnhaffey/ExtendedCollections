@@ -36,7 +36,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collections\CollectionWithSingleValueProperty.cs" />
+    <Compile Include="Collections\CollectionWithSinglePropertyPropertyConstraint.cs" />
+    <Compile Include="Collections\CollectionWithPropertyConstraintBase.cs" />
     <Compile Include="Enums\SinglePropertyHandlerType.cs" />
     <Compile Include="Exceptions\MultipleSingleValueException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,7 +7,7 @@ namespace ExtendedCollectionsUnitTests.TestData
 	{
 		public string Name { get; set; }
 
-		public CollectionWithSingleValueProperty<EmailAddress, bool> EmailAddresses { get; set; } =
-			new CollectionWithSingleValueProperty<EmailAddress, bool>("IsDefault", true);
+		public CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool> EmailAddresses { get; set; } =
+			new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true);
 	}
 }
