@@ -36,10 +36,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collections\CollectionWithSinglePropertyPropertyConstraint.cs" />
+    <Compile Include="Collections\CollectionWithSingleValuePropertyConstraint.cs" />
     <Compile Include="Collections\CollectionWithPropertyConstraintBase.cs" />
+    <Compile Include="Collections\CollectionWithUniqueValuePropertyConstraint.cs" />
     <Compile Include="Enums\SinglePropertyHandlerType.cs" />
-    <Compile Include="Exceptions\MultipleSingleValueException.cs" />
+    <Compile Include="Exceptions\MultipleSingleValuePropertyException.cs" />
+    <Compile Include="Exceptions\NotUniquePropertyValueException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ExtendedCollectionsUnitTests
 {
 	[TestClass]
-	public class CollectionWithSingleValuePropertyTests
+	public class CollectionWithSinglePropertyPropertyConstraintTests
 	{
 		private Person _person;
 		private List<string> _recievedEvents;
@@ -29,10 +29,10 @@ namespace ExtendedCollectionsUnitTests
 		}
 
 		[TestMethod]
-		public void Test_CollectionWithSingleValueProperty_ModifySingleObject_SinglePropertyChangedEventRaised()
+		public void Test_CollectionWithSinglePropertyPropertyConstraint_ModifySingleObject_SinglePropertyChangedEventRaised()
 		{
 			// ARRANGE
-			_person.EmailAddresses = new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true)
+			_person.EmailAddresses = new CollectionWithSingleValuePropertyConstraint<EmailAddress, bool>("IsDefault", true)
 			{
 				new EmailAddress {IsDefault = true, Address = "john.smith@example.com"}
 			};
@@ -47,10 +47,10 @@ namespace ExtendedCollectionsUnitTests
 		}
 
 		[TestMethod]
-		public void Test_CollectionWithSingleValueProperty_AddToCollection_Valid_HandlerDefault()
+		public void Test_CollectionWithSinglePropertyPropertyConstraint_AddToCollection_Valid_HandlerDefault()
 		{
 			// ARRANGE
-			_person.EmailAddresses = new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true)
+			_person.EmailAddresses = new CollectionWithSingleValuePropertyConstraint<EmailAddress, bool>("IsDefault", true)
 			{
 				new EmailAddress {IsDefault = true, Address = "john.smith@example.com"}
 			};
@@ -69,10 +69,10 @@ namespace ExtendedCollectionsUnitTests
 		}
 
 		[TestMethod]
-		public void Test_CollectionWithSingleValueProperty_AddToCollection_Invalid_HandlerDefault()
+		public void Test_CollectionWithSinglePropertyPropertyConstraint_AddToCollection_Invalid_HandlerDefault()
 		{
 			// ARRANGE
-			_person.EmailAddresses = new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true)
+			_person.EmailAddresses = new CollectionWithSingleValuePropertyConstraint<EmailAddress, bool>("IsDefault", true)
 			{
 				new EmailAddress {IsDefault = true, Address = "john.smith@example.com"}
 			};
@@ -91,11 +91,11 @@ namespace ExtendedCollectionsUnitTests
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(MultipleSingleValueException), "More than one single value was found in the collection.")]
-		public void Test_CollectionWithSingleValueProperty_AddToCollection_Invalid_HandlerThrowException()
+		[ExpectedException(typeof(MultipleSingleValuePropertyException<EmailAddress>))]
+		public void Test_CollectionWithSinglePropertyPropertyConstraint_AddToCollection_Invalid_HandlerThrowException()
 		{
 			// ARRANGE
-			_person.EmailAddresses = new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true, false,
+			_person.EmailAddresses = new CollectionWithSingleValuePropertyConstraint<EmailAddress, bool>("IsDefault", true, false,
 				SinglePropertyHandlerType.THROW_EXCEPTION)
 			{
 				new EmailAddress {IsDefault = true, Address = "john.smith@example.com"}
@@ -113,11 +113,11 @@ namespace ExtendedCollectionsUnitTests
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(MultipleSingleValueException), "More than one single value was found in the collection.")]
-		public void Test_CollectionWithSingleValueProperty_ChangeToCollection_Invalid_HandlerThrowException()
+		[ExpectedException(typeof(MultipleSingleValuePropertyException<EmailAddress>))]
+		public void Test_CollectionWithSinglePropertyPropertyConstraint_ChangeToCollection_Invalid_HandlerThrowException()
 		{
 			// ARRANGE
-			_person.EmailAddresses = new CollectionWithSinglePropertyPropertyConstraint<EmailAddress, bool>("IsDefault", true, false,
+			_person.EmailAddresses = new CollectionWithSingleValuePropertyConstraint<EmailAddress, bool>("IsDefault", true, false,
 				SinglePropertyHandlerType.THROW_EXCEPTION)
 			{
 				new EmailAddress {IsDefault = true, Address = "john.smith@example.com"},

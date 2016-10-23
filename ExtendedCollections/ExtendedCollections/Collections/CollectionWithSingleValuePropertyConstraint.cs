@@ -5,7 +5,7 @@ using ExtendedCollections.Exceptions;
 
 namespace ExtendedCollections.Collections
 {
-	public class CollectionWithSinglePropertyPropertyConstraint<T, TPt> :
+	public class CollectionWithSingleValuePropertyConstraint<T, TPt> :
 		CollectionWithPropertyConstraintBase<T, TPt> where T : INotifyPropertyChanged
 	{
 		#region Protected Overriden Methods
@@ -36,7 +36,7 @@ namespace ExtendedCollections.Collections
 			}
 			else
 			{
-				throw new MultipleSingleValueException();
+				throw new MultipleSingleValuePropertyException<T>(item, _propertyName);
 			}
 		}
 
@@ -45,13 +45,13 @@ namespace ExtendedCollections.Collections
 		#region Constructors
 
 		/// <summary>
-		///     Instaniate a new instance of CollectionWithSinglePropertyPropertyConstraint
+		///     Instaniate a new instance of CollectionWithSingleValuePropertyConstraint
 		/// </summary>
 		/// <param name="propertyName">The property name of the T Item that can only have a single default value</param>
 		/// <param name="singleValue">The single value for T</param>
 		/// <param name="defaultValue">The default value for T to use</param>
 		/// <param name="defaultHandler">Handler if more than one T Item has the single value</param>
-		public CollectionWithSinglePropertyPropertyConstraint(string propertyName, TPt singleValue,
+		public CollectionWithSingleValuePropertyConstraint(string propertyName, TPt singleValue,
 			TPt defaultValue = default(TPt),
 			SinglePropertyHandlerType defaultHandler = SinglePropertyHandlerType.RESET_OTHERS_TO_DEFAULT)
 			: base(propertyName)
@@ -62,14 +62,14 @@ namespace ExtendedCollections.Collections
 		}
 
 		/// <summary>
-		///     Instaniate a new instance of CollectionWithSinglePropertyPropertyConstraint
+		///     Instaniate a new instance of CollectionWithSingleValuePropertyConstraint
 		/// </summary>
 		/// <param name="anotherCollection">Another Enumerable Collection Type</param>
 		/// <param name="propertyName">The property name of the T Item that can only have a single default value</param>
 		/// <param name="singleValue">The single value for T</param>
 		/// <param name="defaultValue">The default value for T to use</param>
 		/// <param name="defaultHandler">Handler if more than one T Item has the single value</param>
-		public CollectionWithSinglePropertyPropertyConstraint(IEnumerable<T> anotherCollection, string propertyName,
+		public CollectionWithSingleValuePropertyConstraint(IEnumerable<T> anotherCollection, string propertyName,
 			TPt singleValue,
 			TPt defaultValue = default(TPt),
 			SinglePropertyHandlerType defaultHandler = SinglePropertyHandlerType.RESET_OTHERS_TO_DEFAULT)
